@@ -1,30 +1,354 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource/source-code-pro/400.css";
+@import "@fontsource/source-code-pro/600.css";
+
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Global stylesheet. Infima ships with the classic template; the tokens below
+ * retune it towards the gnome.org art direction: Adwaita Sans style typography,
+ * the GNOME HIG palette, flat surfaces, hairline borders, generous radii and
+ * pill buttons.
  */
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+    /* GNOME HIG palette. */
+    --gnome-blue-1: #99c1f1;
+    --gnome-blue-2: #62a0ea;
+    --gnome-blue-3: #3584e4;
+    --gnome-blue-4: #1c71d8;
+    --gnome-blue-5: #1a5fb4;
+    --gnome-green-3: #33d17a;
+    --gnome-green-4: #2ec27e;
+    --gnome-yellow-4: #f5c211;
+    --gnome-yellow-5: #e5a50a;
+    --gnome-orange-3: #ff7800;
+    --gnome-orange-4: #e66100;
+    --gnome-red-3: #e01b24;
+    --gnome-red-4: #c01c28;
+    --gnome-purple-2: #c061cb;
+    --gnome-purple-3: #9141ac;
+    --gnome-brown-2: #b5835a;
+    --gnome-light-2: #f6f5f4;
+    --gnome-light-3: #deddda;
+    --gnome-dark-2: #5e5c64;
+    --gnome-dark-3: #3d3846;
+    --gnome-dark-4: #241f31;
+
+    --ifm-color-primary: #3068b6;
+    --ifm-color-primary-dark: #2b5ea4;
+    --ifm-color-primary-darker: #29589b;
+    --ifm-color-primary-darkest: #22497f;
+    --ifm-color-primary-light: #3572c8;
+    --ifm-color-primary-lighter: #3976cb;
+    --ifm-color-primary-lightest: #467fce;
+
+    --ifm-font-family-base: "Inter Variable", Inter, system-ui, sans-serif;
+    --ifm-font-family-monospace: "Source Code Pro", ui-monospace, monospace;
+    --ifm-heading-font-weight: 700;
+    --ifm-global-radius: 10px;
+    --ifm-button-border-radius: 9999px;
+    --ifm-navbar-shadow: none;
+    --ifm-h1-font-size: 2.6rem;
+
+    /* Brand — the two logo fills plus the chosen primary. */
+    --mx-ice: #aed7fa;
+    --mx-mid: #729bd9;
+    --mx-deep: #3068b6;
+    --mx-ink: #16212f;
+
+    /*
+     * Surfaces, light variant. The page sits on the off-white window colour,
+     * the chrome and the cards stay pure white, and the band greys come from
+     * the Infima scale Docusaurus ships: gray-100 for the features strip and
+     * gray-200 for the sidebar and the footer. The activity strip sits one
+     * notch below gray-200 so the installer demo reads as a panel set into the
+     * page; it stops short of gray-300 because that drops --mx-dim text on it
+     * to 4.2:1, under the 4.5:1 WCAG AA floor for body copy.
+     */
+    --ifm-background-color: #fafafb;
+    --ifm-background-surface-color: var(--ifm-color-gray-0);
+    --mx-window-bg: #fafafb;
+    --mx-band-bg: #e3e6ea;
+    --mx-band-alt-bg: var(--ifm-color-gray-100);
+    --mx-view-bg: var(--ifm-color-gray-0);
+    --mx-headerbar-bg: var(--ifm-color-gray-0);
+    --mx-card-bg: var(--ifm-color-gray-0);
+    --mx-hero-bg: var(--ifm-color-gray-100);
+    --mx-hero-glow: rgb(48 104 182 / 13%);
+    --mx-sidebar-bg: var(--ifm-color-gray-200);
+    --mx-hairline: var(--ifm-color-gray-300);
+    --mx-hairline-strong: var(--ifm-color-gray-500);
+    --mx-shade: var(--ifm-color-gray-100);
+    --mx-dim: var(--ifm-color-gray-700);
+
+    --mx-accent-bg: var(--mx-deep);
+    --mx-accent-fg: #ffffff;
+    --mx-accent-tint: rgb(48 104 182 / 12%);
+    --mx-accent-line: var(--mx-deep);
+
+    /* "Modulix" of the wordmark; "OS" keeps the brand blue in both themes. */
+    --mx-wordmark-fg: #1b2a41;
+
+    --mx-card-shadow:
+        0 0 0 1px rgb(0 0 0 / 7%), 0 1px 2px rgb(0 0 0 / 8%),
+        0 6px 14px -6px rgb(0 0 0 / 15%), 0 16px 32px -18px rgb(0 0 0 / 22%);
+    --mx-card-shadow-raised:
+        0 0 0 1px rgb(0 0 0 / 8%), 0 2px 5px rgb(0 0 0 / 10%),
+        0 14px 26px -8px rgb(0 0 0 / 20%), 0 30px 54px -24px rgb(0 0 0 / 30%);
+    /*
+     * Deliberately heavier than --mx-card-shadow: the key-figures band sits on
+     * the same off-white as the hero it now follows, so it needs its own rim
+     * and a deeper drop to read as a raised panel. Light theme only — the dark
+     * variant falls back to the regular card treatment below.
+     */
+    --mx-card-shadow-strong:
+        0 0 0 1px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 10%),
+        0 8px 18px -6px rgb(0 0 0 / 20%), 0 22px 40px -20px rgb(0 0 0 / 28%);
+    --mx-chrome-shadow: 0 1px 4px rgb(0 0 0 / 9%);
+    --mx-logo-shadow-opacity: 0.3;
+    --mx-button-shadow:
+        0 1px 2px rgb(0 0 0 / 12%), 0 6px 14px -6px rgb(48 104 182 / 45%);
+    --mx-radius-card: 16px;
+    --mx-radius-window: 20px;
+
+    /* Texture. */
+    --mx-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    --mx-grain-opacity: 0.3;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+[data-theme="dark"] {
+    --ifm-color-primary: #aed7fa;
+    --ifm-color-primary-dark: #86c3f8;
+    --ifm-color-primary-darker: #72b9f6;
+    --ifm-color-primary-darkest: #369cf3;
+    --ifm-color-primary-light: #d6ebfc;
+    --ifm-color-primary-lighter: #eaf5fe;
+    --ifm-color-primary-lightest: #ffffff;
+
+    /* libadwaita named colors, dark variant. */
+    --ifm-background-color: #1e1e1e;
+    --ifm-background-surface-color: #2b2b2b;
+    --mx-window-bg: #1e1e1e;
+    --mx-band-bg: #181818;
+    --mx-band-alt-bg: #1a1a1a;
+    --mx-view-bg: #141414;
+    --mx-headerbar-bg: #2b2b2b;
+    --mx-card-bg: #2b2b2b;
+    --mx-hero-bg: #1e1e1e;
+    --mx-hero-glow: rgb(53 132 228 / 18%);
+    --mx-sidebar-bg: #181818;
+    --mx-hairline: rgb(255 255 255 / 12%);
+    --mx-hairline-strong: rgb(255 255 255 / 22%);
+    --mx-shade: rgb(255 255 255 / 9%);
+    --mx-dim: rgb(255 255 255 / 64%);
+
+    --mx-accent-bg: var(--gnome-blue-3);
+    --mx-accent-fg: #ffffff;
+    --mx-accent-tint: rgb(53 132 228 / 20%);
+    --mx-accent-line: var(--gnome-blue-2);
+
+    --mx-wordmark-fg: #e0e7f2;
+
+    --mx-card-shadow: 0 0 0 1px rgb(255 255 255 / 8%);
+    --mx-card-shadow-raised:
+        0 0 0 1px rgb(255 255 255 / 12%), 0 10px 28px -10px rgb(0 0 0 / 70%);
+    --mx-card-shadow-strong: var(--mx-card-shadow);
+    --mx-chrome-shadow: none;
+    --mx-logo-shadow-opacity: 0.55;
+    --mx-button-shadow: none;
+
+    --mx-grain-opacity: 0.18;
+}
+
+html {
+    background-color: var(--mx-window-bg);
+}
+
+h1,
+h2,
+h3 {
+    letter-spacing: -0.021em;
+}
+
+/* Flat headerbar, hairline instead of shadow — GNOME HeaderBar. */
+.navbar {
+    background-color: var(--mx-headerbar-bg);
+    border-bottom: 1px solid var(--mx-hairline);
+    box-shadow: var(--mx-chrome-shadow);
+}
+
+.footer {
+    background-color: var(--mx-sidebar-bg);
+    border-top: 1px solid var(--mx-hairline);
+}
+
+.footer--dark {
+    --ifm-footer-background-color: var(--mx-sidebar-bg);
+    --ifm-footer-color: var(--ifm-font-color-base);
+    --ifm-footer-link-color: var(--ifm-font-color-base);
+    --ifm-footer-title-color: var(--ifm-font-color-base);
+}
+
+.button {
+    font-weight: 700;
+    border: none;
+    box-shadow: none;
+}
+
+.theme-code-block {
+    --prism-background-color: var(--mx-view-bg) !important;
+    box-shadow: 0 0 0 1px var(--mx-hairline) !important;
+}
+
+/* libadwaita pill buttons, shared by the homepage sections. */
+.mxSuggested,
+.mxFlatButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.78rem 1.6rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.mxSuggested {
+    color: var(--mx-accent-fg);
+    background: var(--mx-accent-bg);
+}
+
+.mxSuggested:hover,
+.mxSuggested:focus {
+    color: var(--mx-accent-fg);
+    background: color-mix(in srgb, var(--mx-accent-bg) 86%, #000000);
+    text-decoration: none;
+}
+
+.mxFlatButton {
+    color: var(--ifm-font-color-base);
+    background: var(--mx-shade);
+}
+
+.mxFlatButton:hover,
+.mxFlatButton:focus {
+    color: var(--ifm-font-color-base);
+    background: var(--mx-hairline-strong);
+    text-decoration: none;
+}
+
+.mxSuggested:focus-visible,
+.mxFlatButton:focus-visible {
+    outline: 2px solid var(--mx-accent-line);
+    outline-offset: 2px;
+}
+
+/*
+ * libadwaita split button: one accent-coloured pill holding the labelled
+ * action and an icon-only companion, parted by a hairline rather than a gap.
+ */
+.mxSplitButton {
+    display: inline-flex;
+    align-items: stretch;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: var(--mx-accent-bg);
+    box-shadow: var(--mx-button-shadow);
+}
+
+.mxSplitButton > .mxSuggested,
+.mxSplitButton > .mxIconButton {
+    border-radius: 0;
+    background: transparent;
+}
+
+.mxSplitButton > .mxSuggested:hover,
+.mxSplitButton > .mxSuggested:focus,
+.mxSplitButton > .mxIconButton:hover,
+.mxSplitButton > .mxIconButton:focus {
+    background: rgb(0 0 0 / 12%);
+}
+
+/* The wrapper clips, so the ring has to sit inside the button. */
+.mxSplitButton > .mxSuggested:focus-visible,
+.mxSplitButton > .mxIconButton:focus-visible {
+    outline-offset: -4px;
+    outline-color: var(--mx-accent-fg);
+}
+
+.mxIconButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.05rem;
+    border-left: 1px solid rgb(255 255 255 / 30%);
+    color: var(--mx-accent-fg);
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+.mxIconButton:hover,
+.mxIconButton:focus {
+    color: var(--mx-accent-fg);
+    text-decoration: none;
+}
+
+.mxIconButton:focus-visible {
+    outline: 2px solid var(--mx-accent-line);
+    outline-offset: 2px;
+}
+
+.mxIconButtonGlyph {
+    width: 1.45rem;
+    height: 1.45rem;
+}
+
+@media screen and (max-width: 768px) {
+    .mxSplitButton {
+        width: 100%;
+    }
+
+    .mxSplitButton > .mxSuggested {
+        flex: 1 1 auto;
+    }
+}
+
+.mxCtaIcon {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin-right: 0.5rem;
+}
+
+/* Scroll reveal — shared by every homepage section. */
+.mxReveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+        opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--mx-delay, 0ms);
+}
+
+.mxRevealVisible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mxReveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

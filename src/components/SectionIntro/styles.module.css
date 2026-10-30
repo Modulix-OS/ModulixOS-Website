@@ -1,0 +1,29 @@
+.intro {
+  max-width: 40rem;
+  margin: 0 auto 2.25rem;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  background: var(--mx-accent-tint);
+  color: var(--ifm-color-primary);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.6rem, 3.6vw, 2.3rem);
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--mx-dim);
+  line-height: 1.6;
+}

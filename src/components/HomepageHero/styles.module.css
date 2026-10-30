@@ -1,0 +1,156 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 6.5rem 0 6rem;
+  /*
+   * Flat colour rather than a gradient: the key-figures band directly below
+   * paints the very same --mx-hero-bg, and a gradient would make the seam show
+   * as the hero drifted away from it. The glow stays on top as its own layer.
+   */
+  background-color: var(--mx-hero-bg);
+  background-image: radial-gradient(
+    58rem 26rem at 50% -4rem,
+    var(--mx-hero-glow),
+    transparent 72%
+  );
+  text-align: center;
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--mx-grain);
+  background-size: 160px 160px;
+  opacity: var(--mx-grain-opacity);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.statusPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.appIconWrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/*
+ * Second copy of the mark sitting right behind the first: `brightness(0)`
+ * keeps the alpha channel and paints every petal black, so the blur carries
+ * the star outline instead of a generic halo.
+ */
+.appIconShadow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 7rem;
+  height: 7rem;
+  transform: translate(-50%, 0.6rem);
+  filter: brightness(0) blur(9px);
+  opacity: var(--mx-logo-shadow-opacity);
+  pointer-events: none;
+}
+
+.appIcon {
+  position: relative;
+  width: 7rem;
+  height: 7rem;
+}
+
+.heroTitle {
+  margin: 0.6rem 0 0;
+  line-height: 1;
+}
+
+.wordmark {
+  display: block;
+  width: clamp(15rem, 46vw, 24rem);
+  height: auto;
+}
+
+/*
+ * The asset carries its own light/dark rules in a <style> block, which SVGO
+ * strips when the file is inlined as a component, leaving the light fill hard
+ * coded on the first <text>. Re-apply it from the site theme instead — the
+ * declaration has to win over that inline style. The second <text> is the "OS"
+ * in brand blue and reads on both backgrounds, so it is left alone.
+ */
+.wordmark text:first-of-type {
+  fill: var(--mx-wordmark-fg) !important;
+}
+
+.heroSubtitle {
+  max-width: 36rem;
+  margin: 0;
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  line-height: 1.5;
+  color: var(--mx-dim);
+}
+
+.heroButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+  margin-top: 0.7rem;
+}
+
+/* Revealed once the ISO download starts, under the hero buttons. */
+.installHelp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1.1rem;
+  padding: 1.4rem 1.6rem 1.25rem;
+  border-radius: var(--mx-radius-card);
+  background: var(--mx-card-bg);
+  box-shadow: var(--mx-card-shadow);
+  animation: mxInstallHelpIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+@keyframes mxInstallHelpIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.installHelpTitle {
+  max-width: 24rem;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.heroMeta {
+  margin-top: 0.3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    padding: 3.25rem 1rem 3rem;
+  }
+
+  .appIcon,
+  .appIconShadow {
+    width: 4.75rem;
+    height: 4.75rem;
+  }
+
+  .heroButtons {
+    width: 100%;
+  }
+}

@@ -1,0 +1,243 @@
+.section {
+  padding: 4.5rem 0 5rem;
+  background: var(--mx-band-bg);
+  border-top: 1px solid var(--mx-hairline);
+}
+
+/*
+ * Equal columns plus equal rows: every card ends up the same width and the
+ * same height, whatever its own content measures.
+ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Once the intro has played, clicks answer without the staged delay. */
+.gridSettled {
+  --mx-select-delay: 0ms;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 1.5rem 1.25rem 1.4rem;
+  text-align: center;
+  border: 2px solid transparent;
+  border-radius: var(--mx-radius-card);
+  background: var(--mx-card-bg);
+  box-shadow: var(--mx-card-shadow);
+}
+
+/*
+ * The tick target. It cannot wrap the edition radios — a button may not nest
+ * interactive content — so it claims the rest of the card height instead and
+ * the radios sit next to it, inside the same container.
+ */
+.cardMain {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.35rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  appearance: none;
+  border: 0;
+  background: none;
+}
+
+.card:hover {
+  box-shadow: var(--mx-card-shadow-raised);
+}
+
+.cardMain:focus-visible,
+.variant:focus-visible {
+  outline: 2px solid var(--mx-accent-line);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/*
+ * The default selection ticks on once every card has landed, so the section
+ * replays the state the installer opens in.
+ */
+.card,
+.checkbox,
+.radio {
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    border-width 0.3s ease,
+    box-shadow 0.2s ease;
+  transition-delay: var(--mx-select-delay, 900ms);
+}
+
+.card:hover {
+  transition-delay: 0ms;
+}
+
+.cardSelected {
+  border-color: var(--mx-accent-line);
+  background: var(--mx-accent-tint);
+}
+
+.checkbox {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border: 1px solid var(--mx-hairline-strong);
+  border-radius: 6px;
+}
+
+.checkboxOn {
+  color: var(--mx-accent-fg);
+  border-color: var(--mx-accent-bg);
+  background: var(--mx-accent-bg);
+}
+
+.checkMark {
+  width: 0.95rem;
+  height: 0.95rem;
+  animation: mxCheckPop 0.26s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: var(--mx-select-delay, 900ms);
+}
+
+@keyframes mxCheckPop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Icon block: a lone icon at full size, otherwise a two-column collage. */
+.icons {
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 8.5rem;
+  margin: 0.4rem 0 0.9rem;
+}
+
+.iconsCollage {
+  grid-template-columns: repeat(2, auto);
+}
+
+.iconsCollage .iconTile:nth-child(3):last-child {
+  grid-column: span 2;
+}
+
+.iconSingle {
+  width: 6rem;
+  height: 6rem;
+}
+
+.iconTile {
+  width: 4rem;
+  height: 4rem;
+}
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.cardDescription {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--mx-dim);
+}
+
+.cardDetail {
+  margin-top: 0.3rem;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--mx-dim);
+}
+
+.variants {
+  display: inline-flex;
+  gap: 1.1rem;
+  margin-top: 0.7rem;
+  font-size: 0.88rem;
+}
+
+.variant {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  appearance: none;
+  border: 0;
+  background: none;
+}
+
+.radio {
+  width: 1.05rem;
+  height: 1.05rem;
+  border: 1px solid var(--mx-hairline-strong);
+  border-radius: 50%;
+}
+
+.radioOn {
+  border: 5px solid var(--mx-accent-bg);
+}
+
+.caption {
+  max-width: 38rem;
+  margin: 1.75rem auto 0;
+  text-align: center;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--mx-dim);
+}
+
+@media screen and (max-width: 996px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 3rem 0 3.5rem;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Cards outside PHONE_ACTIVITY_IDS; see the constant for the why. */
+  .hiddenOnPhone {
+    display: none;
+  }
+}

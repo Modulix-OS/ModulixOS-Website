@@ -1,11 +1,70 @@
 .features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
+  padding: 3.5rem 0 3rem;
   width: 100%;
+  background: var(--mx-band-alt-bg);
+  border-top: 1px solid var(--mx-hairline);
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.6rem 1.5rem;
+  border-radius: var(--mx-radius-card);
+  background: var(--mx-card-bg);
+  box-shadow: var(--mx-card-shadow);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--mx-card-shadow-raised);
+}
+
+/* Flat tinted icon tile, as in libadwaita list rows. */
+.iconBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 9px;
+  background: var(--mx-accent-tint);
+  color: var(--ifm-color-primary);
+}
+
+.icon {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.12rem;
+  letter-spacing: -0.01em;
+}
+
+.cardBody {
+  margin: 0;
+  color: var(--mx-dim);
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 996px) {
+  .features {
+    padding: 2.5rem 0 2rem;
+  }
+
+  /*
+   * The cards stack at this width and need air between them. It has to be a
+   * row gap on the Infima grid, not a margin on the card: .card is height:100%
+   * of its column, so any margin is counted into the column height and then
+   * swallowed again as the card stretches to fill it.
+   */
+  .features :global(.row) {
+    row-gap: 2.5rem;
+  }
 }

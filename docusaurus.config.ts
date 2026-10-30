@@ -18,7 +18,7 @@ const config: Config = {
 
   // Production url of the site. The QR code of the homepage builds its
   // absolute link from it, so it has to be the domain actually served.
-  url: "https://modulixos.org",
+  url: "https://www.modulixos.org",
   // The custom domain is declared in static/CNAME, so the site is served from
   // the root rather than from /<projectName>/.
   baseUrl: "/",

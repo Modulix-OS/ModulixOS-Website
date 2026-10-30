@@ -1,0 +1,20 @@
+/* The code stays on white whatever the theme, so phones still read it. */
+.qrCard {
+  display: flex;
+  padding: 0.65rem;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: var(--mx-card-shadow);
+}
+
+.qrCaption {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--mx-dim);
+}
+
+.meta {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--mx-dim);
+}

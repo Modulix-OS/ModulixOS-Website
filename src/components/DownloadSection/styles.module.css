@@ -1,0 +1,45 @@
+/*
+ * Closing download band: the action column on the left, the QR code and the
+ * guide link beside it. Both columns keep their own vertical rhythm, so the
+ * row centres them against each other whatever the QR size.
+ */
+.download {
+  padding: 3.5rem 0 4rem;
+  background: var(--mx-window-bg);
+  border-top: 1px solid var(--mx-hairline);
+}
+
+.downloadInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.downloadRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.downloadMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.downloadAside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+@media screen and (max-width: 768px) {
+  .downloadRow {
+    gap: 2rem;
+  }
+}

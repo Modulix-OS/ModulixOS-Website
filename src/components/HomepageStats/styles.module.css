@@ -1,0 +1,74 @@
+/*
+ * Continues the hero rather than following it: same flat --mx-hero-bg, same
+ * film grain on top, so the two bands read as one surface and the seam between
+ * them disappears.
+ */
+.stats {
+  position: relative;
+  isolation: isolate;
+  padding: 3rem 0 3.25rem;
+  background-color: var(--mx-hero-bg);
+}
+
+.stats::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--mx-grain);
+  background-size: 160px 160px;
+  opacity: var(--mx-grain-opacity);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+  border-radius: var(--mx-radius-card);
+  background: var(--mx-card-bg);
+  box-shadow: var(--mx-card-shadow-strong);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.item + .item {
+  border-left: 1px solid var(--mx-hairline);
+}
+
+.value {
+  font-size: clamp(1.6rem, 3.6vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ifm-color-primary);
+}
+
+.label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--mx-dim);
+}
+
+@media screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .item:nth-child(odd) {
+    border-left: none;
+  }
+
+  .item:nth-child(n + 3) {
+    border-top: 1px solid var(--mx-hairline);
+  }
+}

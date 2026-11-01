@@ -73,7 +73,6 @@
     --mx-headerbar-bg: var(--ifm-color-gray-0);
     --mx-card-bg: var(--ifm-color-gray-0);
     --mx-hero-bg: var(--ifm-color-gray-100);
-    --mx-hero-glow: rgb(48 104 182 / 13%);
     --mx-sidebar-bg: var(--ifm-color-gray-200);
     --mx-hairline: var(--ifm-color-gray-300);
     --mx-hairline-strong: var(--ifm-color-gray-500);
@@ -134,7 +133,6 @@
     --mx-headerbar-bg: #2b2b2b;
     --mx-card-bg: #2b2b2b;
     --mx-hero-bg: #1e1e1e;
-    --mx-hero-glow: rgb(53 132 228 / 18%);
     --mx-sidebar-bg: #181818;
     --mx-hairline: rgb(255 255 255 / 12%);
     --mx-hairline-strong: rgb(255 255 255 / 22%);

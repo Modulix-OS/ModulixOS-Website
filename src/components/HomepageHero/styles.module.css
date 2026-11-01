@@ -6,14 +6,9 @@
   /*
    * Flat colour rather than a gradient: the key-figures band directly below
    * paints the very same --mx-hero-bg, and a gradient would make the seam show
-   * as the hero drifted away from it. The glow stays on top as its own layer.
+   * as the hero drifted away from it.
    */
   background-color: var(--mx-hero-bg);
-  background-image: radial-gradient(
-    58rem 26rem at 50% -4rem,
-    var(--mx-hero-glow),
-    transparent 72%
-  );
   text-align: center;
 }
 

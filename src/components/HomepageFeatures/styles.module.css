@@ -53,17 +53,24 @@
   line-height: 1.6;
 }
 
+/*
+ * The grid runs over several rows, so the rows need air between them, and the
+ * trailing one is centred when the cards do not fill it. The spacing has to be
+ * a row gap on the Infima grid, not a margin on the card: .card is height:100%
+ * of its column, so any margin is counted into the column height and then
+ * swallowed again as the card stretches to fill it.
+ */
+.features :global(.row) {
+  justify-content: center;
+  row-gap: 2rem;
+}
+
 @media screen and (max-width: 996px) {
   .features {
     padding: 2.5rem 0 2rem;
   }
 
-  /*
-   * The cards stack at this width and need air between them. It has to be a
-   * row gap on the Infima grid, not a margin on the card: .card is height:100%
-   * of its column, so any margin is counted into the column height and then
-   * swallowed again as the card stretches to fill it.
-   */
+  /* The cards stack at this width and need more air than between rows. */
   .features :global(.row) {
     row-gap: 2.5rem;
   }

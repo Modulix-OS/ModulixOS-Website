@@ -51,6 +51,22 @@
     "message": "Chaque module est une case à cocher. Les dépendances, les pilotes et les services derrière sont le problème de Modulix, pas le vôtre.",
     "description": "Body of the third homepage feature card"
   },
+  "homepage.features.lightGaming.title": {
+    "message": "Jouez avec 12 Go de RAM",
+    "description": "Title of the fourth homepage feature card"
+  },
+  "homepage.features.lightGaming.description": {
+    "message": "Le système reste en arrière-plan : pas de services inutiles, pas de logiciels non désirés. Votre RAM va au jeu, pas à l'OS.",
+    "description": "Body of the fourth homepage feature card"
+  },
+  "homepage.features.keepYourMachine.title": {
+    "message": "Gardez l'ordinateur que vous avez",
+    "description": "Title of the fifth homepage feature card"
+  },
+  "homepage.features.keepYourMachine.description": {
+    "message": "ModulixOS n'installe que ce que vous cochez : il reste léger sur une machine que d'autres jugent trop vieille. Aucune raison de remplacer un ordinateur qui marche encore.",
+    "description": "Body of the fifth homepage feature card"
+  },
   "homepage.stats.modules.label": {
     "message": "Modules disponibles",
     "description": "Caption of the available modules stat"

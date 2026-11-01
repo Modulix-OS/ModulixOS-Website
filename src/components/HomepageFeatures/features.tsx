@@ -2,6 +2,8 @@ import type { ComponentType, ReactNode, SVGProps } from "react";
 import Translate from "@docusaurus/Translate";
 import {
   AtomicUpdateIcon,
+  GamepadIcon,
+  KeepHardwareIcon,
   ModularIcon,
   OneClickIcon,
 } from "@site/src/components/Icons";
@@ -78,6 +80,46 @@ export const FEATURES: FeatureItem[] = [
       >
         Every module is a checkbox. The dependencies, drivers and services
         behind it are Modulix's problem, not yours.
+      </Translate>
+    ),
+  },
+  {
+    Icon: GamepadIcon,
+    title: (
+      <Translate
+        id="homepage.features.lightGaming.title"
+        description="Title of the fourth homepage feature card"
+      >
+        Play with 12 GB of RAM
+      </Translate>
+    ),
+    description: (
+      <Translate
+        id="homepage.features.lightGaming.description"
+        description="Body of the fourth homepage feature card"
+      >
+        The system stays out of the way — no useless services, no unwanted
+        software. Your RAM goes to the game, not to the OS.
+      </Translate>
+    ),
+  },
+  {
+    Icon: KeepHardwareIcon,
+    title: (
+      <Translate
+        id="homepage.features.keepYourMachine.title"
+        description="Title of the fifth homepage feature card"
+      >
+        Keep the computer you have
+      </Translate>
+    ),
+    description: (
+      <Translate
+        id="homepage.features.keepYourMachine.description"
+        description="Body of the fifth homepage feature card"
+      >
+        ModulixOS installs only what you tick, so it stays light on hardware
+        others call too old. No reason to replace a machine that still works.
       </Translate>
     ),
   },

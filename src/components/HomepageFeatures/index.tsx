@@ -4,8 +4,8 @@ import { FEATURES } from "./features";
 import styles from "./styles.module.css";
 
 /**
- * Homepage section listing what makes ModulixOS different, as a three-card
- * grid.
+ * Homepage section listing what makes ModulixOS different, as a grid of cards
+ * three to a row, the last row centred when it is not full.
  */
 export default function HomepageFeatures(): ReactNode {
   return (

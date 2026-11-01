@@ -164,7 +164,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} ModulixOS. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} ModulixOS. Built with Docusaurus. Icons from the <a href="https://www.gnome.org">GNOME Project</a> (Adwaita, CC BY-SA 3.0).`,
     },
     prism: {
       theme: prismThemes.github,

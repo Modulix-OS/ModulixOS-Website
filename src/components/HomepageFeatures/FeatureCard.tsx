@@ -10,7 +10,7 @@ const STAGGER_MS = 110;
 /**
  * One feature card, revealing itself on scroll.
  *
- * @param props.Icon Inline icon component for the card badge.
+ * @param props.Icon Inline icon component heading the card.
  * @param props.title Feature name.
  * @param props.description Feature body copy.
  * @param props.index Zero-based position in the grid, used to stagger the
@@ -25,9 +25,7 @@ export default function FeatureCard({
   return (
     <div className="col col--4">
       <Reveal className={styles.card} delayMs={index * STAGGER_MS}>
-        <span className={styles.iconBadge}>
-          <Icon className={styles.icon} />
-        </span>
+        <Icon className={styles.icon} />
         <Heading as="h3" className={styles.cardTitle}>
           {title}
         </Heading>

@@ -1,7 +1,9 @@
 import type { ReactNode, SVGProps } from "react";
 import { StrokeIcon } from "./StrokeIcon";
+import { SymbolicIcon } from "./SymbolicIcon";
 
 export { StrokeIcon } from "./StrokeIcon";
+export { SymbolicIcon } from "./SymbolicIcon";
 
 /**
  * Downward arrow onto a tray, marking the ISO download action.
@@ -47,49 +49,78 @@ export function CheckIcon(props: SVGProps<SVGSVGElement>): ReactNode {
 }
 
 /**
- * Stacked blocks, standing for a system assembled module by module.
+ * Puzzle piece, standing for a system assembled module by module.
+ *
+ * Adwaita `application-x-addon-symbolic`, GNOME Project.
  *
  * @param props Standard SVG attributes forwarded to the root `<svg>`.
  */
 export function ModularIcon(props: SVGProps<SVGSVGElement>): ReactNode {
   return (
-    <StrokeIcon {...props}>
-      <rect x="3" y="3" width="7.5" height="7.5" rx="2" />
-      <rect x="13.5" y="3" width="7.5" height="7.5" rx="2" />
-      <rect x="3" y="13.5" width="7.5" height="7.5" rx="2" />
-      <path d="M17.25 13.5v7.5M13.5 17.25h7.5" />
-    </StrokeIcon>
+    <SymbolicIcon {...props}>
+      <path d="m 7.03125 0.015625 c -1.109375 0 -2 0.890625 -2 2 v 1 h -3.015625 c -1.109375 0 -2 0.890625 -2 2 v 2 h 1.015625 c 1.105469 0 2 0.890625 2 2 s -0.894531 2 -2 2 h -1.015625 v 2.988281 c 0 1.105469 0.890625 2 2 2 h 3.015625 v -0.988281 c 0 -1.109375 0.890625 -2 2 -2 c 1.105469 0 2 0.890625 2 2 v 0.988281 h 2 c 1.105469 0 2 -0.894531 2 -2 v -2.988281 h 1 c 1.105469 0 2 -0.890625 2 -2 s -0.894531 -2 -2 -2 h -1 v -2 c 0 -1.109375 -0.894531 -2 -2 -2 h -2 v -1 c 0 -1.109375 -0.894531 -2 -2 -2 z" />
+    </SymbolicIcon>
   );
 }
 
 /**
- * Circular arrows around a plus sign, standing for an update that can always
- * be rolled back to the system that worked before it.
+ * Update badge, standing for an atomic update that can always be rolled back
+ * to the system that worked before it.
+ *
+ * Adwaita `software-update-available-symbolic`, GNOME Project.
  *
  * @param props Standard SVG attributes forwarded to the root `<svg>`.
  */
 export function AtomicUpdateIcon(props: SVGProps<SVGSVGElement>): ReactNode {
   return (
-    <StrokeIcon {...props}>
-      <path d="M20.5 12a8.5 8.5 0 0 1-14.3 6.2" />
-      <path d="M3.5 12a8.5 8.5 0 0 1 14.3-6.2" />
-      <path d="M17.8 2.4v3.4h-3.4M6.2 21.6v-3.4h3.4" />
-      <path d="M9.6 12h4.8M12 9.6v4.8" />
-    </StrokeIcon>
+    <SymbolicIcon {...props}>
+      <path d="m 8 0 c -0.257812 0 -0.511719 0.0976562 -0.707031 0.292969 l -1.707031 1.707031 h -2.585938 c -0.550781 0 -1 0.449219 -1 1 v 2.585938 l -1.707031 1.707031 c -0.3906252 0.390625 -0.3906252 1.023437 0 1.414062 l 1.707031 1.707031 v 2.585938 c 0 0.550781 0.449219 1 1 1 h 2.585938 l 1.707031 1.707031 c 0.390625 0.390625 1.023437 0.390625 1.414062 0 l 1.707031 -1.707031 h 2.585938 c 0.550781 0 1 -0.449219 1 -1 v -2.585938 l 1.707031 -1.707031 c 0.390625 -0.390625 0.390625 -1.023437 0 -1.414062 l -1.707031 -1.707031 v -2.585938 c 0 -0.550781 -0.449219 -1 -1 -1 h -2.585938 l -1.707031 -1.707031 c -0.195312 -0.1953128 -0.449219 -0.292969 -0.707031 -0.292969 z m 0 5 c 0.257812 0 0.511719 0.097656 0.707031 0.292969 l 2 2 c 0.183594 0.1875 0.289063 0.441406 0.285157 0.707031 h 0.007812 v 1 h -2 v 2 h -2 v -2 h -2 v -1 h 0.007812 c -0.003906 -0.265625 0.101563 -0.519531 0.285157 -0.707031 l 2 -2 c 0.195312 -0.195313 0.449219 -0.292969 0.707031 -0.292969 z" />
+    </SymbolicIcon>
   );
 }
 
 /**
- * Mouse pointer with motion rays, standing for the single click the installer
- * asks for.
+ * Mouse, standing for the single click the installer asks for.
+ *
+ * Adwaita `input-mouse-symbolic`, GNOME Project.
  *
  * @param props Standard SVG attributes forwarded to the root `<svg>`.
  */
 export function OneClickIcon(props: SVGProps<SVGSVGElement>): ReactNode {
   return (
-    <StrokeIcon {...props}>
-      <path d="M6.6 4.4 17.1 11.7l-4.6 1.2 2.6 5.2-2.3 1.1-2.6-5.2-3.6 3Z" />
-      <path d="M16.9 3.1V1.6M19.4 4.7 20.9 3.2M20.9 7.4h1.5" />
-    </StrokeIcon>
+    <SymbolicIcon {...props}>
+      <path d="m 7.03125 0 c -2.753906 0 -5 2.246094 -5 5 v 6 c 0 2.753906 2.246094 5 5 5 h 1.96875 c 2.753906 0 5 -2.246094 5 -5 v -6 c 0 -2.753906 -2.246094 -5 -5 -5 z m 0 2 h 1.96875 c 1.679688 0 3 1.320312 3 3 v 6 c 0 1.679688 -1.320312 3 -3 3 h -1.96875 c -1.679688 0 -3 -1.320312 -3 -3 v -6 c 0 -1.679688 1.320312 -3 3 -3 z m 0.96875 1 c -0.554688 0 -1 0.445312 -1 1 v 2 c 0 0.554688 0.445312 1 1 1 s 1 -0.445312 1 -1 v -2 c 0 -0.554688 -0.445312 -1 -1 -1 z" />
+    </SymbolicIcon>
+  );
+}
+
+/**
+ * Game controller, standing for the headroom a lean system leaves to games.
+ *
+ * Adwaita `input-gaming-symbolic`, GNOME Project.
+ *
+ * @param props Standard SVG attributes forwarded to the root `<svg>`.
+ */
+export function GamepadIcon(props: SVGProps<SVGSVGElement>): ReactNode {
+  return (
+    <SymbolicIcon {...props}>
+      <path d="m 3.46875 2 c -1.660156 0 -2.800781 1 -3 3 c 0 0 -0.5 3 -0.5 5 c 0 0 0 3 3.03125 3 c 2.96875 0 2.96875 -3 2.96875 -3 c 0 -1.5 1.050781 -2.003906 2 -2 c 0.941406 0.003906 2 0.5 2.03125 2 c 0 0 -0.03125 3 2.96875 3 s 3 -3 3 -3 c 0.03125 -2 -0.5 -5 -0.5 -5 c -0.164062 -1.652344 -1.339844 -3 -3 -3 z m 0.75 2 h 0.5 c 0.136719 0 0.25 0.113281 0.25 0.25 v 0.75 h 0.75 c 0.136719 0 0.25 0.113281 0.25 0.25 v 0.5 c 0 0.136719 -0.113281 0.25 -0.25 0.25 h -0.75 v 0.75 c 0 0.136719 -0.113281 0.25 -0.25 0.25 h -0.5 c -0.136719 0 -0.25 -0.113281 -0.25 -0.25 v -0.75 h -0.75 c -0.136719 0 -0.25 -0.113281 -0.25 -0.25 v -0.5 c 0 -0.136719 0.113281 -0.25 0.25 -0.25 h 0.75 v -0.75 c 0 -0.136719 0.113281 -0.25 0.25 -0.25 z m 5.75 0 c 0.550781 0 1 0.449219 1 1 s -0.449219 1 -1 1 s -1 -0.449219 -1 -1 s 0.449219 -1 1 -1 z m 3 2 c 0.550781 0 1 0.449219 1 1 s -0.449219 1 -1 1 s -1 -0.449219 -1 -1 s 0.449219 -1 1 -1 z" />
+    </SymbolicIcon>
+  );
+}
+
+/**
+ * Desktop computer, standing for a machine that keeps running instead of
+ * being replaced.
+ *
+ * Adwaita `computer-symbolic`, GNOME Project.
+ *
+ * @param props Standard SVG attributes forwarded to the root `<svg>`.
+ */
+export function KeepHardwareIcon(props: SVGProps<SVGSVGElement>): ReactNode {
+  return (
+    <SymbolicIcon {...props}>
+      <path d="m 3 0 c -1.660156 0 -3 1.339844 -3 3 v 7 c 0 1.660156 1.339844 3 3 3 h 10 c 1.660156 0 3 -1.339844 3 -3 v -7 c 0 -1.660156 -1.339844 -3 -3 -3 z m 0 2 h 10 c 0.554688 0 1 0.445312 1 1 v 7 c 0 0.554688 -0.445312 1 -1 1 h -10 c -0.554688 0 -1 -0.445312 -1 -1 v -7 c 0 -0.554688 0.445312 -1 1 -1 z m 2 12 c -1.105469 0 -2 0.894531 -2 2 h 10 c 0 -1.105469 -0.894531 -2 -2 -2 z" />
+    </SymbolicIcon>
   );
 }
